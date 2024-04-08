@@ -34,34 +34,8 @@
     "resources": [
         {
             "apiVersion": "2017-05-10",
-            "name": "[variables('cosmosDbAccountName')]",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('deploymentUrlBase'), 'cosmos-db.json')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "cosmosDbName": {
-                        "value": "[variables('cosmosDbAccountName')]"
-                    },
-                    "cosmosApiType": {
-                        "value": "SQL"
-                    },
-                   "defaultConsistencyLevel": {
-                        "value": "Eventual"
-                    }
-                }
-            }
-        },
-        {
-            "apiVersion": "2017-05-10",
             "name": "providerPortalCosmosSQLdatabase",
             "type": "Microsoft.Resources/deployments",
-            "dependsOn": [
-                "[variables('cosmosDbAccountName')]"
-            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
